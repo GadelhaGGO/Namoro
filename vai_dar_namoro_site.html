@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vai dar Namoro?</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://i.imgur.com/8ZQZ8J5.png'); /* imagem de corações, pode trocar */
+      background-size: cover;
+      background-repeat: repeat;
+      margin: 0;
+      padding: 0;
+      color: #fff;
+      text-align: center;
+    }
+    .container {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+    .descricao {
+      font-size: 1em;
+      margin-bottom: 20px;
+    }
+    form label {
+      display: block;
+      margin: 15px 0 5px;
+      font-size: 1.1em;
+    }
+    form select {
+      padding: 10px;
+      font-size: 1em;
+      width: 100%;
+      border-radius: 6px;
+      border: none;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 1.2em;
+      background-color: #ff4081;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .resultado {
+      margin-top: 30px;
+      font-size: 1.3em;
+    }
+    .parabens {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #00ffcc;
+      animation: pulse 1s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>💘 Vai dar Namoro? 💘</h1>
+    <div class="descricao">
+      Gadelha, 41 anos<br>
+      1,80m - 115kg<br>
+      Praticante de esportes 🏃‍♂️<br>
+      Bom humor 😄<br>
+      Inteligente 🧠, fiel 💍 e protetor 🛡️
+    </div>
+    <form id="formulario">
+      <label>Gosta de esporte?</label>
+      <select name="esporte">
+        <option value="0">Não</option>
+        <option value="1">Sim</option>
+      </select>
+
+      <label>Tem vícios?</label>
+      <select name="vicios">
+        <option value="1">Não</option>
+        <option value="0">Sim</option>
+      </select>
+
+      <label>É sorridente?</label>
+      <select name="sorridente">
+        <option value="0">Não</option>
+        <option value="1">Sim</option>
+      </select>
+
+      <label>Carinhosa?</label>
+      <select name="carinhosa">
+        <option value="0">Não</option>
+        <option value="1">Sim</option>
+      </select>
+
+      <label>Pensa no futuro?</label>
+      <select name="futuro">
+        <option value="0">Não</option>
+        <option value="1">Sim</option>
+      </select>
+
+      <label>Cheirosa?</label>
+      <select name="cheirosa">
+        <option value="0">Não</option>
+        <option value="1">Sim</option>
+      </select>
+
+      <label>Gosta de agradar?</label>
+      <select name="agradar">
+        <option value="0">Não</option>
+        <option value="1">Sim</option>
+      </select>
+
+      <label>Aceita barba?</label>
+      <select name="barba">
+        <option value="0">Não</option>
+        <option value="1">Sim</option>
+      </select>
+
+      <label>Tem bom humor?</label>
+      <select name="humor">
+        <option value="0">Não</option>
+        <option value="1">Sim</option>
+      </select>
+
+      <label>É educada?</label>
+      <select name="educada">
+        <option value="0">Não</option>
+        <option value="1">Sim</option>
+      </select>
+
+      <button type="submit">Ver Resultado</button>
+    </form>
+    <div class="resultado" id="resultado"></div>
+  </div>
+
+  <script>
+    document.getElementById("formulario").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const respostas = new FormData(e.target);
+      let pontos = 0;
+      for (let valor of respostas.values()) {
+        pontos += parseInt(valor);
+      }
+
+      const resultado = document.getElementById("resultado");
+
+      if (pontos > 8) {
+        resultado.innerHTML = `🎉 <span class="parabens">Parabéns! Você é uma forte candidata! 💖</span> 🎉`;
+      } else {
+        resultado.innerHTML = `Você fez ${pontos} ponto(s). Continue tentando! 😉`;
+      }
+    });
+  </script>
+</body>
+</html>
